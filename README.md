@@ -1,5 +1,5 @@
 # EX01 Developing a Simple Webserver
-## Date: 27/08/25
+## Date: 01/09/25
 
 ## AIM:
 To develop a simple webserver to serve html pages and display the list of protocols in TCP/IP Protocol Suite.
@@ -49,50 +49,56 @@ Registration No : 212224230180
 <body>
 <h1>TCP/IP Protocol</h1>
 
-<table border="1" align="left cellpadding="10" cellspacing="0" bgcolor="lightgreen">
+<table border="1" align cellpadding="10" cellspacing="0" bgcolor="lightpink">
   <tr>
-    <th>S.no</th>
     <th>Layer</th>
-    <th>Protocols</th>
+    <th>Protocols / Technologies</th>
   </tr>
 
   <tr>
-    <td>1.</td>
-    <td><b>Application Layer</b></td>
+    <td><b>1. Application Layer</b></td>
     <td>HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS, Telnet, SSH</td>
   </tr>
 
   <tr>
-    <td>2.</td>
-    <td><b>Transport Layer</b></td>
+    <td><b>2. Transport Layer</b></td>
     <td>TCP (Transmission Control Protocol), UDP (User Datagram Protocol)</td>
   </tr>
 
   <tr>
-    <td>3.</td>
-    <td><b>Network Layer (Internet Layer in TCP/IP)</b></td>
+    <td><b>3. Network Layer (Internet Layer in TCP/IP)</b></td>
     <td>IP (IPv4, IPv6), ICMP, IGMP, ARP, RARP</td>
   </tr>
 
   <tr>
-    <td>4.</td>
-    <td><b>Link Layer (Network Access Layer in TCP/IP)</b></td>
+    <td><b>4. Link Layer (Network Access Layer in TCP/IP)</b></td>
     <td>Ethernet</td>
   </tr>
 </table>
 
 </body>
 </html>
+'''
+class MyServer(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("GET request received...")
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(content.encode("utf-8"))
+
+print("This is my webserver, running at http://localhost:5000/")
+server_address = ('', 5000)
+httpd = HTTPServer(server_address, MyServer)
+httpd.serve_forever()
 ```
 
 
 ## OUTPUT:
 
-<img width="949" height="1127" alt="image" src="https://github.com/user-attachments/assets/0d05c170-4ef6-434d-9b6d-0f67df20ac98" />
+<img width="1912" height="458" alt="image" src="https://github.com/user-attachments/assets/4707282e-e568-45fa-99a3-9ee7e12cd547" />
 
-<img width="1612" height="376" alt="image" src="https://github.com/user-attachments/assets/c2b2098f-6234-4e30-9524-7ed2e9730374" />
-
-<img width="1919" height="1127" alt="image" src="https://github.com/user-attachments/assets/e27acbc0-1a4c-4f27-bbca-e8b204944e38" />
+<img width="1919" height="1199" alt="image" src="https://github.com/user-attachments/assets/6422447b-55f8-4295-842c-ec546ebeb1c2" />
 
 
 
